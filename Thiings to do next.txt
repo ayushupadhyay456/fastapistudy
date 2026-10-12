@@ -1,0 +1,34 @@
+1. Authentication & Security (Start Here)
+Rate limiting controls how fast users hit your endpoints; authentication controls who can access them.
+
+Password Hashing: Storing passwords safely using pwdlib (with Argon2 or bcrypt) instead of plain text.
+
+OAuth2 with Password Flow & JWTs:
+
+Implementing a /login route that accepts username/password and returns a signed JSON Web Token (using pyjwt).
+
+Creating a get_current_user dependency with OAuth2PasswordBearer to protect private endpoints.
+
+Role-Based Access Control (RBAC): Creating dependencies to verify whether the logged-in user is a regular user or an admin (e.g., Depends(require_admin)).
+
+CORS Configuration: Setting up CORSMiddleware so your React, Vue, or mobile frontend can make requests to your API without browser blocking.
+
+2. Database Persistence & ORM Integration
+Moving beyond in-memory state (fake_db) to a real SQL database:
+
+SQLAlchemy 2.0 (Async) or SQLModel: Defining database tables, managing relationships (1-to-many, many-to-many), and writing async queries.
+
+The get_db Dependency Pattern: Using a yield dependency to safely open and automatically close/commit database sessions per request.
+
+Schema Separation: Keeping Pydantic schemas (for API validation) separated from ORM models (for database tables).
+
+Database Migrations with Alembic: Managing schema versioning and auto-generating database alterations.
+
+3. Application Architecture & Configuration
+Transitioning from a single script to a maintainable production structure:
+
+Settings with pydantic-settings: Managing environment variables (.env) for secrets, database URLs, and debug flags using typed configuration classes.
+
+Multi-File Modular Routing: Splitting your app into domain folders (routers/, models/, schemas/, services/) using APIRouter.
+
+Centralized Error Handling: Writing global exception handlers to return standard JSON error formats across all endpoints.

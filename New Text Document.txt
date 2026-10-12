@@ -1,0 +1,5 @@
+Three SQL problems using window functions (top-N per group, running total, LAG).
+Write a FastAPI CRUD app with a Depends DB session and a JWT dependency from scratch, without looking.
+One LRU cache and one rate limiter in plain Python.
+One asyncio.gather plus Semaphore example.
+Five easy LeetCode problems on hash maps and sliding window.

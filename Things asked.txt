@@ -1,0 +1,27 @@
+GIL
+async vs sync
+non repeating string
+python is multi threaded
+list vs tuples
+why mutable and immutable
+
+threading
+
+
+process- is a working program that has its own memory,
+threading -is a smaller part of the process (it is the smallest part of process).
+
+GIL - is a mutex that stops the parallel execution of threads and it stops the python bytecode to process multiple threads at a time.
+Multi threading -
+
+
+I/O Bound Task and CPU Bound Task
+
+I/O Bound Task--- Most of the time is taken in data transfer like network request.
+
+CPU Bound Task -- When there is big calculation is involved.
+
+
+
+
+
