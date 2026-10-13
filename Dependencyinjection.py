@@ -179,4 +179,4 @@ def read_user(user_id: int, db: DbSession):
         )
         
     # Return the user record matching the UserResponse schema
-    return user
+    return user    
