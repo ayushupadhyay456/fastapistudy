@@ -26,7 +26,7 @@ for ch in "banana":
     standard_dict[ch] = standard_dict.get(ch, 0) + 1
 
 # Option C: collections.Counter for fast one-liner counting
-freq = Counter("banana")  # Counter({'a': 3, 'n': 2, 'b': 1})
+freq = Counter("banana")  # Counter({'a': 3, 'n': 2, 'b': 1})    
 
 
 # =============================================================================
