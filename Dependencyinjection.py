@@ -166,7 +166,7 @@ def create_user(user_data: UserCreate, db: DbSession):
     return new_user
 
 # GET endpoint: Retrieves a specific user by their primary key ID
-@app.get("/users/{user_id}", response_model=UserResponse)
+@app.get("/users/{user_id}", response_model=UserResponse) #Response model only gives the data defined in the class
 def read_user(user_id: int, db: DbSession):
     # Query the database directly by primary key
     user = db.get(UserModel, user_id)

@@ -105,7 +105,7 @@ intervals = [[2, 6], [1, 3], [1, 2]]
 
 # Example: Sort by start time ascending, then by end time descending
 intervals.sort(key=lambda x: (x[0], -x[1]))
-# Result: [[1, 3], [1, 2], [2, 6]]
+# Result: [[1, 3], [1, 2], [2, 6]]    
 
 
 # =============================================================================
