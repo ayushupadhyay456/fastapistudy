@@ -16,7 +16,7 @@ def create_access_token(data:dict):
     return jwt.encode(to_encode,secret_key,algorithm=ALGORITHM)
 
 
-
+ 
 
 
 
@@ -38,5 +38,5 @@ def get_user_date(token:str=Depends(oauth2_scheme)):
     return {"message":f"The user name is {user}"}
 
 
-
-
+ 
+     
