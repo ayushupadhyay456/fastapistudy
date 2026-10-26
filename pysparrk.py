@@ -26,7 +26,7 @@ schema=StructType([
 
 df =spark.read.csv("pyspark_interview_mock_transactions.csv",header=True,schema=schema)
 
-df.printschema()
+df.printSchema()
 
 df.show(5,truncate=False)
 
@@ -34,3 +34,5 @@ print(f"Total records:{df.count()}")
 
 print(df.columns)
 print(df.dtypes)
+
+df.filter(col("status")=="Success").show(5)
