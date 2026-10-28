@@ -16,6 +16,9 @@ class Email:
         else:
              self.errors.append("Welcome")
              return self.errors
+    @staticmethod
+    def hello_get():
+        return 5*3
     def get_errors(self):
         return self.errors
 
@@ -24,5 +27,6 @@ user1=Email()
 if user1.email_validator(email='ayush@gmail.com')==False:
     print(user1.get_errors())
 print(user1.username_taken(username="Rahul"))
+print(Email.hello_get())
 
     
