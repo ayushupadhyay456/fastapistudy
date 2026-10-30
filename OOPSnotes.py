@@ -82,6 +82,10 @@ class Temperature:
         self._celsius = value
 
 
+
+
+
+
 temp = Temperature(25.0)
 temp.celsius = 30.0  # Calls the setter transparently
 # temp.celsius = -300.0  # Raises ValueError
