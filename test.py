@@ -80,7 +80,7 @@ def count_letters(s):
         if i in d:
             d[i]+=1
         else:
-            d[i]=1
+            d[i]=1    
     return d
 
 if __name__=='__main__':
