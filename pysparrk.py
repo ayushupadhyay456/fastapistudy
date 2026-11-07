@@ -26,7 +26,7 @@ schema=StructType([
 
 df =spark.read.csv("pyspark_interview_mock_transactions.csv",header=True,schema=schema)
 
-df.printSchema()
+df.printSchema()   
 
 df.show(5,truncate=False)
 
