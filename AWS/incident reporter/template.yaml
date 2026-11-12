@@ -1,0 +1,54 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: Incident Investigator Agent - Phase 1 poller
+
+Parameters:
+  LogGroups:
+    Type: String
+    Description: Comma-separated CloudWatch log group names to watch (not the poller's own group)
+  ScheduleRate:
+    Type: String
+    Default: rate(30 minutes)
+
+Resources:
+  PollerLogGroup:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: /aws/lambda/incident-agent-poller
+      RetentionInDays: 14
+
+  PollerFunction:
+    Type: AWS::Serverless::Function
+    DependsOn: PollerLogGroup
+    Properties:
+      FunctionName: incident-agent-poller
+      CodeUri: poller/
+      Handler: handler.lambda_handler
+      Runtime: python3.12
+      Timeout: 60
+      MemorySize: 256
+      Environment:
+        Variables:
+          LOG_GROUPS: !Ref LogGroups
+          CHECKPOINT_PARAM: /incident-agent/checkpoint
+      Policies:
+        - Statement:
+            # Read-only access to logs. TODO (later phase): narrow this to your exact log groups.
+            - Effect: Allow
+              Action: logs:FilterLogEvents
+              Resource: !Sub arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:*
+            # Only the one checkpoint parameter.
+            - Effect: Allow
+              Action:
+                - ssm:GetParameter
+                - ssm:PutParameter
+              Resource: !Sub arn:aws:ssm:${AWS::Region}:${AWS::AccountId}:parameter/incident-agent/checkpoint
+      Events:
+        Every30Minutes:
+          Type: ScheduleV2
+          Properties:
+            ScheduleExpression: !Ref ScheduleRate
+
+Outputs:
+  PollerFunctionName:
+    Value: !Ref PollerFunction
