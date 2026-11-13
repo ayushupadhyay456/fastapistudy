@@ -1,9 +1,0 @@
-.aws-sam/
-__pycache__/
-.pytest_cache/
-samconfig.toml
-checkpoint.json
-checkpoint.json.tmp
-.env
-*.env
-*.csv
